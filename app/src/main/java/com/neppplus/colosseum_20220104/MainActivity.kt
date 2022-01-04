@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_20220104.databinding.ActivityMainBinding
+import com.neppplus.colosseum_20220104.utils.ServerUtil
 
 class MainActivity : BaseActivity() {
 
@@ -26,7 +27,8 @@ class MainActivity : BaseActivity() {
             val inputPw = binding.edtPassword.toString()
             
 //            서버에서 이메일 / 비번이 맞는 계정인지? 로그인 요청
-            
+
+
         }
 
     }
