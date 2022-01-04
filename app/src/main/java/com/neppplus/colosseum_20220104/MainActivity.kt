@@ -19,6 +19,15 @@ class MainActivity : BaseActivity() {
 
     }
     override fun setupEvents() {
+        
+        binding.btnLogin.setOnClickListener { 
+            
+            val inputEmail = binding.edtEmail.toString()
+            val inputPw = binding.edtPassword.toString()
+            
+//            서버에서 이메일 / 비번이 맞는 계정인지? 로그인 요청
+            
+        }
 
     }
 
