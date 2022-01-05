@@ -33,8 +33,8 @@ class MainActivity : BaseActivity() {
         
         binding.btnLogin.setOnClickListener { 
             
-            val inputEmail = binding.edtEmail.toString()
-            val inputPw = binding.edtPassword.toString()
+            val inputEmail = binding.edtEmail.text.toString()
+            val inputPw = binding.edtPassword.text.toString()
             
 //            서버에서 이메일 / 비번이 맞는 계정인지? 로그인 요청
 
@@ -51,7 +51,15 @@ class MainActivity : BaseActivity() {
                     runOnUiThread {
 
                         if(code == 200) {
-                            Toast.makeText(mContext, "로그인 성공", Toast.LENGTH_SHORT).show()
+
+//                            연습문제, 로그인 성공시 그 사람의 닉네임을 추출해서
+//                           " ~~님 환영합니다!" 토스트 출력하기
+                            val dataObj = jsonObj.getJSONObject("data")
+                            val userObj = dataObj.getJSONObject("user")
+                            val nickname = userObj.getString("nick_name")
+
+                            Toast.makeText(mContext, "${nickname}님 환영합니다", Toast.LENGTH_SHORT).show()
+
                         }
                         else{
 
