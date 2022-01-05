@@ -20,6 +20,15 @@ class SignUpActivity : BaseActivity() {
 
     }
     override fun setupEvents() {
+        
+        binding.btnEmailCheck.setOnClickListener { 
+            
+            val inputEmail = binding.edtEmail.text.toString()
+            
+//            서버에 중복 확인 기능 요청 -> ServerUtil 이용
+            
+            
+        }
 
         binding.btnOk.setOnClickListener {
 
