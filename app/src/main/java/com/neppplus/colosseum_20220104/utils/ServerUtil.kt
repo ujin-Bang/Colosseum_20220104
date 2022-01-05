@@ -75,7 +75,7 @@ class ServerUtil {
         }
 
 //  회원가입 함수 - PUT
-        fun putRequestSignUp(email: String, pw: String, nickname: String, handler: JsonResponseHandler){
+        fun putRequestSignUp(email: String, pw: String, nickname: String, handler: JsonResponseHandler?){
 
             val urlString = "${HOST_URL}/user"
 
@@ -102,8 +102,9 @@ class ServerUtil {
                     val bodyString = response.body!!.string()
 
                     val jsonObj = JSONObject(bodyString)
+                    Log.d("서버응답", jsonObj.toString())
 
-                    handler.onResponse(jsonObj)
+                    handler?.onResponse(jsonObj)
                 }
 
 
