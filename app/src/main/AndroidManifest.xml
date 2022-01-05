@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Colosseum_20220104"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".SignUp"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

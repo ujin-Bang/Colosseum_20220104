@@ -7,8 +7,8 @@ import java.io.IOException
 
 class ServerUtil {
 
-    interface JsonResponseHandler{
-        fun onResponse(jsonObj : JSONObject)
+    interface JsonResponseHandler {
+        fun onResponse(jsonObj: JSONObject)
 
     }
 
@@ -17,12 +17,12 @@ class ServerUtil {
 //        여기에 적는 변수 / 함수는 => JAVA의 static에 대응됨.
 //        클래스 이름.기능() 로 활용 가능
 
-//        모든 함수(기능) 가 공유할 서버 컴퓨터 주소
+        //        모든 함수(기능) 가 공유할 서버 컴퓨터 주소
         val HOST_URL = "http://54.180.52.26"
 
         //         로그인 함수 - POST
 
-        fun postRequestLogIn( email:String, pw: String, handler: JsonResponseHandler? ) {
+        fun postRequestLogIn(email: String, pw: String, handler: JsonResponseHandler?) {
 
 //            1. 어디로 가야 하는가? URL
             val urlString = "${HOST_URL}/user"
@@ -30,7 +30,7 @@ class ServerUtil {
 //            2. 어떤 데이터를 들고 가는가? (파라미터)
             val formData = FormBody.Builder()
                 .add("email", email)
-                .add("password",pw)
+                .add("password", pw)
                 .build()
 
 //            3. 어떤 메쏘드 +1/2 데이터 결합. => 어떤 요청인지 완성
@@ -44,7 +44,7 @@ class ServerUtil {
 
             val client = OkHttpClient()
 
-            client.newCall(request).enqueue( object : Callback{
+            client.newCall(request).enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
 
 //                    실패 : 물리적 접속 실패.
@@ -63,7 +63,7 @@ class ServerUtil {
 //                    일반 String -> JSONObject로 변환(한글도 원상복구)
                     val jsonObj = JSONObject(bodyString)
 
-                    Log.d("서버응답",jsonObj.toString())
+                    Log.d("서버응답", jsonObj.toString())
 
 //                    나를 호출한 화면에게 jsonObj를 처리하는 일처리를 미루자.
                     handler?.onResponse(jsonObj)
@@ -74,6 +74,42 @@ class ServerUtil {
 
         }
 
+//  회원가입 함수 - PUT
+        fun putRequestSignUp(email: String, pw: String, nickname: String, handler: JsonResponseHandler){
+
+            val urlString = "${HOST_URL}/user"
+
+            val formData = FormBody.Builder()
+                .add("email",email)
+                .add("password",pw)
+                .add("nick_name",nickname)
+                .build()
+
+            val request = Request.Builder()
+                .url(urlString)
+                .put(formData)
+                .build()
+
+            val client = OkHttpClient()
+
+            client.newCall(request).enqueue(object : Callback{
+                override fun onFailure(call: Call, e: IOException) {
+
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+
+                    val bodyString = response.body!!.string()
+
+                    val jsonObj = JSONObject(bodyString)
+
+                    handler.onResponse(jsonObj)
+                }
+
+
+            })
+
+        }
 
 
     }

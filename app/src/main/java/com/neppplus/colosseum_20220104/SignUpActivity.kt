@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_20220104.databinding.ActivitySignUpBinding
 
-class SignUp : BaseActivity() {
+class SignUpActivity : BaseActivity() {
 
     lateinit var binding: ActivitySignUpBinding
 
