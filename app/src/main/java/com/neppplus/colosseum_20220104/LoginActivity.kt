@@ -106,6 +106,8 @@ class LoginActivity : BaseActivity() {
 
     override fun setValues() {
 
+        binding.edtEmail.setText(ContextUtil.getLoginEmail(mContext))
+
     }
 
 
