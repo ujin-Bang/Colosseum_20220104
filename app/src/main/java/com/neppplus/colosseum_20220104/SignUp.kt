@@ -1,0 +1,28 @@
+package com.neppplus.colosseum_20220104
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.databinding.DataBindingUtil
+import com.neppplus.colosseum_20220104.databinding.ActivitySignUpBinding
+
+class SignUp : BaseActivity() {
+
+    lateinit var binding: ActivitySignUpBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+       binding = DataBindingUtil.setContentView(this,R.layout.activity_sign_up)
+        setupEvents()
+        setValues()
+
+    }
+    override fun setupEvents() {
+
+    }
+
+    override fun setValues() {
+
+    }
+
+
+}
