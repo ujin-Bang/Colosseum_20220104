@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_20220104.databinding.ActivityLoginBinding
+import com.neppplus.colosseum_20220104.utils.ContextUtil
 import com.neppplus.colosseum_20220104.utils.ServerUtil
 import org.json.JSONObject
 
@@ -68,6 +69,8 @@ class LoginActivity : BaseActivity() {
                                val token = dataObj.getString("token")
                                 
 //                                SharedPrefernces라는 공간에 토큰값 저장
+
+                                ContextUtil.setToken(mContext, token)
 
 //                                메인으로 이동
                                 val myIntent = Intent(mContext, MainActivity::class.java)
