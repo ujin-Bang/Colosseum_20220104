@@ -3,6 +3,7 @@ package com.neppplus.colosseum_20220104
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_20220104.databinding.ActivityMainBinding
 import com.neppplus.colosseum_20220104.utils.ServerUtil
@@ -36,6 +37,21 @@ class MainActivity : BaseActivity() {
 //                    로그인 API를 호출하고 돌아온 상황.
 //                    결과로 jsonObj 하나를 받아서 돌아온 상황
                     Log.d("화면에서의jsonObj",jsonObj.toString())
+
+                    val code = jsonObj.getInt("code")
+
+                    runOnUiThread {
+
+                        if(code == 200) {
+                            Toast.makeText(mContext, "로그인 성공", Toast.LENGTH_SHORT).show()
+                        }
+                        else{
+                            Toast.makeText(mContext, "로그인 실패", Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+
+
                 }
 
 
