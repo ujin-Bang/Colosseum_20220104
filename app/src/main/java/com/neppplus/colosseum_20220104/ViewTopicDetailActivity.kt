@@ -32,6 +32,13 @@ class ViewTopicDetailActivity : BaseActivity() {
 
         Glide.with(mContext).load(mTopicData.imageURL).into(binding.imgTopic)
 
+//        현재 진행상황 조회API 호출해 보자. -> 토론 진영 목록 / 몇표 획득?
+        getTopicDetailFromServer()
+    }
+    fun getTopicDetailFromServer(){
+
+
+
     }
 
 }
