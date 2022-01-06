@@ -1,5 +1,6 @@
 package com.neppplus.colosseum_20220104
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -26,10 +27,12 @@ class MainActivity : BaseActivity() {
     }
     override fun setupEvents() {
 
-//        어댑터 객체화  / 리스트뷰이 어댑터로 연결
-        mTopicAdapter = TopicAdapter(mContext, R.layout.topic_list_item, mTopicList)
+        binding.topicListView.setOnItemClickListener { adapterView, view, position, l ->
 
-        binding.topicListView.adapter = mTopicAdapter
+            val myIntent = Intent(mContext,ViewTopicDetailActivity::class.java)
+            startActivity(myIntent)
+
+        }
 
     }
 
@@ -41,6 +44,13 @@ class MainActivity : BaseActivity() {
 //        실제 - 메인 화면의 데이터 받아오기 -> 토론주제 목록 -> 리스트뷰로 표기
 
         getTopicListFromServer()
+
+        //        어댑터 객체화  / 리스트뷰이 어댑터로 연결
+        mTopicAdapter = TopicAdapter(mContext, R.layout.topic_list_item, mTopicList)
+
+        binding.topicListView.adapter = mTopicAdapter
+
+
     }
 
    fun getTopicListFromServer() {
