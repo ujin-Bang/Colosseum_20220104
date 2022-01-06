@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter
 import com.neppplus.colosseum_20220104.R
 import com.neppplus.colosseum_20220104.datas.TopicData
 
-class TopicAtapter(
+class TopicAdapter(
     val mContext: Context,
     val resId: Int,
     val mList: List<TopicData>): ArrayAdapter<TopicData>(mContext, resId, mList) {
