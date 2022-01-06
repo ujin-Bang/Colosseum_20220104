@@ -29,7 +29,10 @@ class MainActivity : BaseActivity() {
 
         binding.topicListView.setOnItemClickListener { adapterView, view, position, l ->
 
+            val clickedTopickData = mTopicList[position]
+
             val myIntent = Intent(mContext,ViewTopicDetailActivity::class.java)
+            myIntent.putExtra("topic",clickedTopickData)
             startActivity(myIntent)
 
         }
