@@ -21,14 +21,34 @@
             android:background="#80000000"/>
 
 
-        <TextView
-            android:id="@+id/txtTopicTitle"
-            android:textSize="20sp"
-            android:textColor="@color/white"
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="토론 주제 표시 자리"/>
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTopicTitle"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="토론 주제 표시 자리"/>
+
+            <TextView
+                android:id="@+id/txtReplyCount"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="현재 댓글 갯수 : 0개"/>
+
+
+        </LinearLayout>
 
     </FrameLayout>
 
