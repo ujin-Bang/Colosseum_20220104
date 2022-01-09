@@ -62,7 +62,7 @@ class ViewTopicDetailActivity : BaseActivity() {
     }
 
     fun refreshUI() {
-//        mTopicDAta가 변경되었으면 -> 새로 반영해달라.
+//        mTopicData가 변경되었으면 -> 새로 반영해달라.
 
         binding.txtTopicTitle.text = mTopicData.title
         Glide.with(mContext).load(mTopicData.imageURL).into(binding.imgTopic)
