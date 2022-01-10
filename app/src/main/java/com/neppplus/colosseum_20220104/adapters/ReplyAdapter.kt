@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.neppplus.colosseum_20220104.R
 import com.neppplus.colosseum_20220104.datas.ReplyData
 import com.neppplus.colosseum_20220104.datas.TopicData
+import java.text.SimpleDateFormat
 
 class ReplyAdapter(
     val mContext: Context,
@@ -32,6 +33,7 @@ class ReplyAdapter(
         val txtReplyContent = row.findViewById<TextView>(R.id.txtReplyContent)
         val txtWriterNickname = row.findViewById<TextView>(R.id.txtWriterNickname)
         val txtSelectedSide = row.findViewById<TextView>(R.id.txtSelectedSide)
+        val txtCreatedAt = row.findViewById<TextView>(R.id.txtCreatedAt)
 
 
 
@@ -40,6 +42,9 @@ class ReplyAdapter(
         txtWriterNickname.text = data.writer.nickname
 
         txtSelectedSide.text = "(${data.selectedSide.title})"
+
+        val sdf = SimpleDateFormat("yyyy/MM/dd a h시 m분")
+        txtCreatedAt.text = sdf.format(data.createdAt.time)
 
 
 
