@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.neppplus.colosseum_20220104.databinding.ActivityViewTopicDetailBinding
+import com.neppplus.colosseum_20220104.datas.ReplyData
 import com.neppplus.colosseum_20220104.datas.TopicData
 import com.neppplus.colosseum_20220104.utils.ServerUtil
 import org.json.JSONObject
@@ -15,6 +16,8 @@ class ViewTopicDetailActivity : BaseActivity() {
     lateinit var binding : ActivityViewTopicDetailBinding
 
     lateinit var mTopicData : TopicData
+
+    val mReplyList = ArrayList<ReplyData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,7 +84,7 @@ class ViewTopicDetailActivity : BaseActivity() {
     }
     fun getTopicDetailFromServer(){
 
-    ServerUtil.getRequestTopicDetail(mContext, mTopicData.id,object :ServerUtil.JsonResponseHandler{
+    ServerUtil.getRequestTopicDetail(mContext, mTopicData.id,"NEW", object :ServerUtil.JsonResponseHandler{
         override fun onResponse(jsonObj: JSONObject) {
 
             val dataObj = jsonObj.getJSONObject("data")
@@ -94,7 +97,16 @@ class ViewTopicDetailActivity : BaseActivity() {
 
                 refreshUI()
 
+            }
+//            댓글 목록 별도 파싱
+            val repliesArr = topicObj.getJSONArray("replies")
+            for(i in 0 until repliesArr.length()){
 
+                val replyObj = repliesArr.getJSONObject(i)
+
+                val replyData = ReplyData.getReplyDataFromJson(replyObj)
+
+                mReplyList.add( replyData)
             }
         }
 

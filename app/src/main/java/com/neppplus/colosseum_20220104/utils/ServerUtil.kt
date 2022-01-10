@@ -247,7 +247,7 @@ class ServerUtil {
 
 
 //      토론 상세 조회하기 - GET
-        fun getRequestTopicDetail( context: Context, topicId: Int,  handler: JsonResponseHandler? ) {
+        fun getRequestTopicDetail( context: Context, topicId: Int, orderType: String,  handler: JsonResponseHandler? ) {
 
             val urlBuilder = "${HOST_URL}/topic".toHttpUrlOrNull()!!.newBuilder() // 서버 주소 /기능주소까지만작성
 
@@ -255,7 +255,7 @@ class ServerUtil {
 //          주소 양식 : Query - /topic?name=조경진  QueryParametr라고 부름
             urlBuilder.addPathSegment(topicId.toString())
 
-//            urlBuilder.addEncodedQueryParameter("type",type)
+            urlBuilder.addEncodedQueryParameter("order_type",orderType)
 //            urlBuilder.addEncodedQueryParameter("value", value)
 
 
