@@ -294,7 +294,7 @@ class ServerUtil {
         }
 
 
-//        토론 진영에 투포하기 - POST
+//        토론 진영에 투표하기 - POST
 
         fun postRequestVote(context: Context, sideId: Int, handler: JsonResponseHandler?) {
 
