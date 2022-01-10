@@ -72,7 +72,7 @@
                             android:textSize="17sp"/>
 
                         <TextView
-                            android:id="@+id/txtVoteCount01"
+                            android:id="@+id/txtSideVoteCount01"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0표"
@@ -108,7 +108,7 @@
                             android:textSize="17sp"/>
 
                         <TextView
-                            android:id="@+id/txtVoteCount02"
+                            android:id="@+id/txtSideVoteCount02"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0표"
