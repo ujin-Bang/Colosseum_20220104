@@ -68,9 +68,6 @@ class ReplyAdapter(
 //                    => 토론 주제 상세 다시 가져오기.(댓글도 가져오게 됨)
 
                     (mContext as ViewTopicDetailActivity).getTopicDetailFromServer()
-
-
-
                 }
 
 
@@ -83,6 +80,8 @@ class ReplyAdapter(
 
             ServerUtil.postRequestReplyLikeOrDislike(mContext, data.id, false, object : ServerUtil.JsonResponseHandler{
                 override fun onResponse(jsonObj: JSONObject) {
+
+                    (mContext as ViewTopicDetailActivity).getTopicDetailFromServer()
 
                 }
 
