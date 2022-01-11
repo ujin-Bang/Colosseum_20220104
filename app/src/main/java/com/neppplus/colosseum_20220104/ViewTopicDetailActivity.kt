@@ -106,6 +106,9 @@ class ViewTopicDetailActivity : BaseActivity() {
             }
 //            댓글 목록 별도 파싱
             val repliesArr = topicObj.getJSONArray("replies")
+
+//            기존에 받아온 댓글은 전부 삭제.
+            mReplyList.clear()
             for(i in 0 until repliesArr.length()){
 
                 val replyObj = repliesArr.getJSONObject(i)

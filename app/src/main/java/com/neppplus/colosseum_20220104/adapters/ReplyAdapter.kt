@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.neppplus.colosseum_20220104.R
+import com.neppplus.colosseum_20220104.ViewTopicDetailActivity
 import com.neppplus.colosseum_20220104.datas.ReplyData
 import com.neppplus.colosseum_20220104.datas.TopicData
 import com.neppplus.colosseum_20220104.utils.ServerUtil
@@ -62,6 +63,13 @@ class ReplyAdapter(
 //            이 댓글에 좋아요를 남겼다고 -> 서버API호출
             ServerUtil.postRequestReplyLikeOrDislike(mContext, data.id, true, object : ServerUtil.JsonResponseHandler{
                 override fun onResponse(jsonObj: JSONObject) {
+
+//                    토론 상세 현황 화면의 기능 활용
+//                    => 토론 주제 상세 다시 가져오기.(댓글도 가져오게 됨)
+
+                    (mContext as ViewTopicDetailActivity).getTopicDetailFromServer()
+
+
 
                 }
 
