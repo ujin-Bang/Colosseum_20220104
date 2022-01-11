@@ -3,6 +3,7 @@ package com.neppplus.colosseum_20220104
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_20220104.adapters.TopicAdapter
 import com.neppplus.colosseum_20220104.databinding.ActivityMainBinding
@@ -53,6 +54,10 @@ class MainActivity : BaseActivity() {
         mTopicAdapter = TopicAdapter(mContext, R.layout.topic_list_item, mTopicList)
 
         binding.topicListView.adapter = mTopicAdapter
+
+//        액션바의 뒤로가기 버틈 숨김( 상속 받은 변수 활용)
+
+        btnBack.visibility = View.GONE
 
 
     }
