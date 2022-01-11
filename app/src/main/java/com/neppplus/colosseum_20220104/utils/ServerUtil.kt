@@ -348,7 +348,7 @@ class ServerUtil {
 
 //        댓글에 좋아요 / 싫어요 찍기 -POST
 
-        fun postRequestReplyLikeDislike(context: Context, replyId: Int, isLike: Boolean, handler: JsonResponseHandler?) {
+        fun postRequestReplyLikeOrDislike(context: Context, replyId: Int, isLike: Boolean, handler: JsonResponseHandler?) {
 
             val urlString = "${HOST_URL}/topic_reply_like"
 
