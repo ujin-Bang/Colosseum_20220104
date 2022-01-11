@@ -23,8 +23,11 @@ class MainActivity : BaseActivity() {
        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         setupEvents()
         setValues()
+        setCustomActionBar()
 
     }
+
+
     override fun setupEvents() {
 
         binding.topicListView.setOnItemClickListener { adapterView, view, position, l ->
