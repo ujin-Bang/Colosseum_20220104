@@ -3,6 +3,7 @@ package com.neppplus.colosseum_20220104
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.neppplus.colosseum_20220104.adapters.ReReplyAdapter
 import com.neppplus.colosseum_20220104.databinding.ActivityViewReplyDetailBinding
 import com.neppplus.colosseum_20220104.datas.ReplyData
 import com.neppplus.colosseum_20220104.utils.ServerUtil
@@ -15,6 +16,7 @@ class ViewReplyDetailActivity : BaseActivity() {
     lateinit var mReplyData : ReplyData
 
     val mReReplyList = ArrayList<ReplyData>()
+    lateinit var mReReplyAdapter : ReReplyAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,9 @@ class ViewReplyDetailActivity : BaseActivity() {
         binding.txtContent.text = mReplyData.content
 
         getReplyDetailFromServer()
+
+        mReReplyAdapter = ReReplyAdapter(mContext, R.layout.re_reply_list_item,mReReplyList)
+        binding.reReplyLisView.adapter = mReReplyAdapter
     }
 
     fun getReplyDetailFromServer() {
@@ -45,11 +50,19 @@ class ViewReplyDetailActivity : BaseActivity() {
                 val replyObj = dataObj.getJSONObject("reply")
                 val repliesArr = replyObj.getJSONArray("replies")
 
+                mReReplyList.clear()
+
                 for( i in 0 until repliesArr.length()){
 
 //                    [] => {} (JSONObject) 추출 -> ReplyData로 변환 -> 대댓글 목록에 추가 (최종목표)
 
                     mReReplyList.add( ReplyData.getReplyDataFromJson( repliesArr.getJSONObject(i) )  )
+
+                }
+
+                runOnUiThread {
+
+                    mReReplyAdapter.notifyDataSetChanged()
 
                 }
             }
