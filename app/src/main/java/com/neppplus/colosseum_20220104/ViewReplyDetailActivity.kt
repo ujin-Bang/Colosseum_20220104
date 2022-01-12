@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_20220104.databinding.ActivityViewReplyDetailBinding
+import com.neppplus.colosseum_20220104.datas.ReplyData
 
 class ViewReplyDetailActivity : BaseActivity() {
 
     lateinit var binding : ActivityViewReplyDetailBinding
+
+    lateinit var mReplyData : ReplyData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +23,12 @@ class ViewReplyDetailActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        mReplyData = intent.getSerializableExtra("reply")as ReplyData
+
+        binding.txtSelectedSide.text ="(${mReplyData.selectedSide.title})"
+        binding.txtWriterNickname.text = mReplyData.writer.nickname
+        binding.txtContent.text = mReplyData.content
 
     }
 
