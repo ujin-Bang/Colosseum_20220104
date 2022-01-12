@@ -58,6 +58,7 @@ class MainActivity : BaseActivity() {
 //        액션바의 뒤로가기 버틈 숨김( 상속 받은 변수 활용)
 
         btnBack.visibility = View.GONE
+        btnProfile.visibility = View.VISIBLE
 
 
     }
