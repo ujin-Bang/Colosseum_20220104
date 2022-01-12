@@ -2,24 +2,67 @@ package com.neppplus.colosseum_20220104
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.neppplus.colosseum_20220104.databinding.ActivityEditReplyBinding
 import com.neppplus.colosseum_20220104.datas.TopicData
+import com.neppplus.colosseum_20220104.utils.ServerUtil
+import org.json.JSONObject
 
 class EditReplyActivity : BaseActivity() {
 
-    lateinit var binding : ActivityEditReplyBinding
+    lateinit var binding: ActivityEditReplyBinding
 
-    lateinit var mTopicData : TopicData
+    lateinit var mTopicData: TopicData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-      binding = DataBindingUtil.setContentView(this,R.layout.activity_edit_reply)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_reply)
         setupEvents()
         setValues()
     }
 
     override fun setupEvents() {
+
+        binding.btnOk.setOnClickListener {
+
+//            입력한 문구가 몇 글자? => 10글자 이내면 거부
+
+            val inputContent = binding.edtContent.text.toString()
+
+            if (inputContent.length < 10) {
+                Toast.makeText(mContext, "최소 10글자 이상 입력해주셔요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+//            검사 통과 -> 의견 등록 ( 서버 호출)
+            ServerUtil.postRequestTopicReply(
+                mContext,
+                mTopicData.id,
+                inputContent,
+                object : ServerUtil.JsonResponseHandler {
+                    override fun onResponse(jsonObj: JSONObject) {
+
+                        val code = jsonObj.getInt("code")
+
+                        runOnUiThread {
+                            if (code == 200) {
+                                Toast.makeText(mContext, "의견 등록에 성공했습니다람쥐", Toast.LENGTH_SHORT)
+                                    .show()
+                                finish()
+                            }
+
+                            else {
+                                val message = jsonObj.getString("message")
+                                Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+
+                            }
+                        }
+                    }
+
+
+                })
+        }
 
     }
 
